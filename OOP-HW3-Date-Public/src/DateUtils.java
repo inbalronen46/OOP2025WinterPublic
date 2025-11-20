@@ -4,6 +4,12 @@ public class DateUtils {
 		GREGORIAN, JEWISH
 	};
 
+	public static final String[] JEWISH_MONTHS_NAMES = { "Nisan", "Iyar", "Sivan", "Tamuz", "Av", "Elul", "Tishrei",
+			"Heshvan", "Kislev", "Tevet", "Shvat", "Adar", "Adar" };
+	
+	public static final String[] GREGORIAN_MONTHS_NAMES = { "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", 
+			"Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."};
+	
 	private static final int DAYS_IN_MONTH[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	/**
@@ -215,6 +221,14 @@ public class DateUtils {
 		return new JewishDate(day, month, year);
 	}
 
+	/**
+	 * @param year the Hebrew year for which to compute elapsed days since the
+	 *             reference epoch; must be a positive integer
+	 *
+	 * @return the absolute number of elapsed days from the Hebrew calendar epoch
+	 *         to Rosh HaShanah of the specified year, after applying all postponement
+	 *         rules
+	 **/
 	private static int hebrewCalendarElapsedDays(int year) {
 		int value, monthsElapsed, partsElapsed, hoursElapsed;
 		int day, parts, alternativeDay;
